@@ -6,12 +6,12 @@
   margin-block-start: 10px;
   margin-block-end: 10px;
   padding-inline-start: 0;
-}
-.pageLink, .previous a, .next a {
-  color: colors.$mainColor;
-  padding: 5px 7px;
-}
-.pageLink:hover, .previous a:hover, .next a:hover {
-  cursor: pointer;
-  color: darkcyan;
+  .pageLink, .prev a, .next a {
+    color: colors.$mainColor;
+    padding: 5px 7px;
+    &:hover {
+      cursor: pointer;
+      color: darkcyan;
+    }
+  }
 }
