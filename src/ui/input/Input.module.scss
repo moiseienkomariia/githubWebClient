@@ -1,0 +1,15 @@
+@use 'src/styles/colors';
+
+.input {
+    border: 1px solid #555;
+    color: #555;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 5px;
+}
+.input:focus-visible {
+    outline-offset: 3px;
+    outline-style: solid;
+    outline-color: colors.$mainColor;
+    outline-width: 2px;
+}

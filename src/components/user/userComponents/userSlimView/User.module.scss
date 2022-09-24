@@ -1,0 +1,19 @@
+@use 'src/styles/colors';
+@use 'src/styles/btn';
+.user {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid colors.$mainColor;
+}
+.avatar {
+  margin-right: 15px;
+  width: 70px;
+  height: 70px;
+}
+.btn {
+  font-size: 0.8rem;
+  margin-right: 7px;
+  margin-top: 7px;
+}

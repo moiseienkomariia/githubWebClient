@@ -1,0 +1,36 @@
+@use './_colors';
+.btn {
+  padding: 3px 10px;
+  display: inline-block;
+  border: 1px solid colors.$mainColor;
+  color: colors.$mainColor;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  background-color: transparent;
+  &:hover, &:focus {
+    background-color: darkcyan;
+    border-color: darkcyan;
+    color: #fff;
+  }
+  &:focus {
+    outline-offset: 2px;
+    outline: 2px solid darkcyan;
+  }
+}
+.btnLink {
+  padding: 3px 0px;
+  display: inline-block;
+  color: colors.$mainColor;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+  &:focus {
+    outline-offset: 2px;
+    outline: 2px solid darkcyan;
+  }
+}
