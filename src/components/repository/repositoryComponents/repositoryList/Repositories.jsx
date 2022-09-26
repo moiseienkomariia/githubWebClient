@@ -5,6 +5,7 @@ import Title from "ui/title/Title";
 import ReactPaginate from "react-paginate";
 import style from './Repositories.modules.scss';
 import Repository from "../repositorySlimView/Repository";
+import ErrorMessage from "../../../error/ErrorMessage";
 
 const Repositories = ({q, page, perPage}) => {
     const [repositories, setRepositories] = useState([]);
@@ -13,6 +14,7 @@ const Repositories = ({q, page, perPage}) => {
     const [currentPage, setCurrentPage] = useState(page);
     const [searchParams, setSearchParams] = useSearchParams();
     const [error, setError] = useState([]);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         searchReposByName(q, currentPage, perPage)
@@ -25,6 +27,7 @@ const Repositories = ({q, page, perPage}) => {
             })
             .catch((error) => {
                 setError(error);
+                setHasError(true)
             });
     }, [currentPage, searchParams]);
 
@@ -46,25 +49,33 @@ const Repositories = ({q, page, perPage}) => {
 
     return (
         <>
-            {repositories.length > 0 ? <Title>Results for {q}:</Title> : <Title>Repositories not found</Title>}
-            {repositories.length > 0 ? repositories.map((repo)=><Repository key={repo.id} item={repo} />) : ''}
-            {totalCount > perPage ?
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel=">"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={perPage}
-                    pageCount={pages}
-                    previousLabel="<"
-                    renderOnZeroPageCount={null}
-                    containerClassName="pagination"
-                    pageClassName="page"
-                    pageLinkClassName="pageLink"
-                    activeClassName="active"
-                    previousClassName="prev"
-                    nextClassName="next"
-                />
-                : ''}
+            {hasError ?
+                <>
+                    <ErrorMessage message={error.message}/>
+                </>
+                :
+                <>
+                    {repositories.length > 0 ? <Title>Results for {q}:</Title> : <Title>Repositories not found</Title>}
+                    {repositories.length > 0 ? repositories.map((repo) => <Repository key={repo.id} item={repo}/>) : ''}
+                    {totalCount > perPage ?
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={perPage}
+                            pageCount={pages}
+                            previousLabel="<"
+                            renderOnZeroPageCount={null}
+                            containerClassName="pagination"
+                            pageClassName="page"
+                            pageLinkClassName="pageLink"
+                            activeClassName="active"
+                            previousClassName="prev"
+                            nextClassName="next"
+                        />
+                        : ''}
+                </>
+            }
         </>
     )
 }

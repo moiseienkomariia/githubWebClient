@@ -1,10 +1,10 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {generatePath} from "react-router-dom";
 import style from "./Repository.module.scss";
 import React from "react";
 
 const Repository = ({item}) => {
-    const path = generatePath("/repository/:name", {name: item.name});
+    const path = generatePath("/repository/:owner/:name", {owner: item.owner.login,name: item.name});
 
     return (
         <div className={style.repo}>
@@ -20,10 +20,12 @@ const Repository = ({item}) => {
                         Stars: {item.stargazers_count}
                     </span>
                     : '' }
-                <a className={style.btn} href={item.clone_url} target="_blank">Link to github</a>
-                <Link className={style.btn} to={path} state={{ repositoryName: item.name, repoOwner: item.owner.login }}>
-                    Show
-                </Link>
+                <div>
+                    <a className={style.btn} href={item.clone_url} target="_blank">Link to github</a>
+                    <Link className={style.btn} to={path} state={{ repositoryName: item.name, repoOwner: item.owner.login }}>
+                        Show
+                    </Link>
+                </div>
             </div>
         </div>
     )
