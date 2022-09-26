@@ -19,9 +19,6 @@ const Repositories = ({q, page, perPage}) => {
     useEffect(() => {
         searchReposByName(q, currentPage, perPage)
             .then((results) => {
-                if (typeof results.message != "undefined") {
-                    throw new Error(results.message);
-                }
                 initPageInfo(results.total_count, perPage);
                 setRepositories(results.items);
             })

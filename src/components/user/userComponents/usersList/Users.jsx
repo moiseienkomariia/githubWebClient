@@ -5,6 +5,7 @@ import {useSearchParams} from "react-router-dom";
 import style from "./Users.module.scss";
 import User from "components/user/userComponents/userSlimView/User";
 import Title from "ui/title/Title";
+import ErrorMessage from "../../../error/ErrorMessage";
 
 const Users = ({name, page, perPage}) => {
     const [users, setUsers] = useState([]);
@@ -13,18 +14,17 @@ const Users = ({name, page, perPage}) => {
     const [currentPage, setCurrentPage] = useState(page);
     const [searchParams, setSearchParams] = useSearchParams();
     const [error, setError] = useState([]);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         searchUsersByName(name, currentPage, perPage)
             .then((results) => {
-                if (typeof results.message != "undefined") {
-                    throw new Error(results.message);
-                }
                 initPageInfo(results.total_count, perPage);
                 setUsers(results.items);
             })
             .catch((error) => {
                 setError(error);
+                setHasError(true);
             });
     }, [currentPage, searchParams]);
 
@@ -45,25 +45,31 @@ const Users = ({name, page, perPage}) => {
 
     return (
         <>
-            {users.length > 0 ? <Title>Results for {name}:</Title> : <Title>User not found</Title>}
-            {users.length > 0 ? users.map((user)=><User key={user.id} item={user} />) : ''}
-            {totalCount > perPage ?
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel=">"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={perPage}
-                    pageCount={pages}
-                    previousLabel="<"
-                    renderOnZeroPageCount={null}
-                    containerClassName={style.pagination}
-                    pageClassName={style.page}
-                    pageLinkClassName={style.pageLink}
-                    activeClassName={style.active}
-                    previousClassName={style.prev}
-                    nextClassName={style.next}
-                />
-                : ''}
+            {hasError ?
+                <ErrorMessage message={error.message} />
+            :
+                <>
+                    {users.length > 0 ? <Title>Results for {name}:</Title> : <Title>User not found</Title>}
+                    {users.length > 0 ? users.map((user)=><User key={user.id} item={user} />) : ''}
+                    {totalCount > perPage ?
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={perPage}
+                            pageCount={pages}
+                            previousLabel="<"
+                            renderOnZeroPageCount={null}
+                            containerClassName={style.pagination}
+                            pageClassName={style.page}
+                            pageLinkClassName={style.pageLink}
+                            activeClassName={style.active}
+                            previousClassName={style.prev}
+                            nextClassName={style.next}
+                        />
+                    : ''}
+                </>
+            }
         </>
     )
 }
