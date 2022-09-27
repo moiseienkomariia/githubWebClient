@@ -10,28 +10,45 @@
   margin-right: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
-}
-.lang {
-  text-align: right;
-  min-height: 28.4px;
-}
-.langPill {
-  display: inline-block;
-  padding: 2px 5px;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  font-size: 0.8rem;
-  margin-bottom: 5px;
-}
-.footer {
-  text-align: left;
-  font-size: .9rem;
-  .btn {
-    margin-left: 7px;
+  .lang {
+    text-align: right;
+    min-height: 28.4px;
+    .langPill {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+  }
+  .name {
+    margin-bottom: 5px;
+    .btnLink {
+      font-size: 1.1rem;
+    }
+  }
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .info {
+    font-size: 0.9rem;
+    .stars {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 10px;
+    }
+  }
+  .footer {
+    text-align: right;
+    font-size: .9rem;
+    .btn {
+      margin-left: 7px;
+    }
   }
 }
-.stars {
-  display: inline-flex;
-  align-items: center;
-  margin-right: 10px;
-}
+
+
+
+

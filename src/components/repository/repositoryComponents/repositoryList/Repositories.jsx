@@ -31,7 +31,7 @@ const Repositories = ({q, page, perPage}) => {
     const initPageInfo = (totalCount, perPage) => {
         let count = totalCount < 1000 ? totalCount : 1000;
         setPages(Math.ceil(count / perPage));
-        setTotalCount(count);
+        setTotalCount(totalCount);
     }
 
     const handlePageClick = (event) => {
@@ -52,7 +52,7 @@ const Repositories = ({q, page, perPage}) => {
                 </>
                 :
                 <>
-                    {repositories.length > 0 ? <Title>Results for {q}:</Title> : <Title>Repositories not found</Title>}
+                    {repositories.length > 0 ? <Title>{totalCount} repository results</Title> : <Title>Repositories not found</Title>}
                     {repositories.length > 0 ? repositories.map((repo) => <Repository key={repo.id} item={repo}/>) : ''}
                     {totalCount > perPage ?
                         <ReactPaginate
