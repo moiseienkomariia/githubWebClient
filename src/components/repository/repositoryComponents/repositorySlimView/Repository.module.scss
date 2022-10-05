@@ -5,7 +5,7 @@
 }
 .repo {
   padding: 15px;
-  border: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
   width: 100%;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -24,8 +24,15 @@
   }
   .name {
     margin-bottom: 5px;
+    .repoIcon {
+      fill: darkcyan;
+      margin-right: 5px;
+      margin-bottom: -2px;
+      opacity: 0.4;
+    }
     .btnLink {
       font-size: 1.1rem;
+      text-decoration: none;
     }
   }
   .description {
@@ -34,10 +41,19 @@
   }
   .info {
     font-size: 0.9rem;
-    .stars {
-      display: inline-flex;
-      align-items: center;
-      margin-right: 10px;
+    .star {
+      fill: darkcyan;
+      margin-right: 5px;
+      margin-bottom: -2px;
+    }
+    .updateDate {
+      margin-left: 15px;
+    }
+    .license {
+      margin-left: 15px;
+    }
+    .issues {
+      margin-left: 15px;
     }
   }
   .footer {
