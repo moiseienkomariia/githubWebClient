@@ -5,27 +5,78 @@
 .repo {
   display: inline-block;
   padding: 15px;
-  border-bottom: 1px solid #e2e2e2;
   width: 100%;
   margin-bottom: 10px;
-}
-.forks {
-  margin-left: 7px;
-}
-.lang {
-  text-align: right;
-  min-height: 28.4px;
-}
-.langPill {
-  display: inline-block;
-  padding: 2px 5px;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  font-size: 0.8rem;
-  margin-bottom: 5px;
-}
-.footer {
-  .btn {
-    margin-left: 7px;
+  @media (min-width: 768px) {
+    display: flex;
+    margin: 0 -15px;
+  }
+  .repoHeader {
+    @media (min-width: 768px) {
+      padding: 15px 15px 15px 0;
+      width: 20%;
+    }
+
+    .forks {
+      margin-left: 15px;
+      svg {
+        margin-right: 5px;
+        fill: darkcyan;
+      }
+    }
+
+    .lang {
+      text-align: right;
+      min-height: 28.4px;
+    }
+
+    .langPill {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+
+    .stars {
+      svg {
+        margin-right: 5px;
+        fill: darkcyan;
+      }
+    }
+
+    .btn {
+      display: block;
+      width: max-content;
+    }
+  }
+  .repoInfo {
+    > .subTitle {
+      margin-top: 0;
+    }
+    @media (min-width: 768px) {
+      padding: 0 15px;
+      width: 60%;
+    }
+    .description {
+      margin-bottom: 15px;
+    }
+    .watchersCount, .license {
+      margin-right: 15px;
+      svg {
+        margin-right: 5px;
+        fill: darkcyan;
+      }
+    }
+    .contributors {
+      margin-top: 25px;
+    }
+  }
+  .releases {
+    @media (min-width: 768px) {
+      padding: 0 15px;
+      width: 25%;
+    }
   }
 }

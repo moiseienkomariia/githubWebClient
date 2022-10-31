@@ -1,3 +1,8 @@
 .searchFormWrapper{
     text-align: right;
+    margin-bottom: 7px;
+    display: inline-block;
+    & + .searchFormWrapper {
+        margin-left: 7px;
+    }
 }

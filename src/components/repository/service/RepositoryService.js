@@ -10,3 +10,8 @@ export const getRepositoryFullViewByName = (repoName, repoOwner) => {
     return fetch(`${config.API_URL}/repos/${repoOwner}/${repoName}`)
         .then((res) => checkResponse(res));
 }
+
+export const getRepositoryContributors = (repoName, repoOwner) => {
+    return fetch(`${config.API_URL}/repos/${repoOwner}/${repoName}/contributors`)
+        .then((res) => checkResponse(res));
+}

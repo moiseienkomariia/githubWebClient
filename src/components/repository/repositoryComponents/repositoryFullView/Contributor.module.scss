@@ -1,0 +1,28 @@
+@use '../../../../styles/_btn.scss';
+.contributor{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  & + .contributor {
+    border-top: 1px solid #eee;
+  }
+  .login {
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 5px;
+    }
+  }
+  .btn {
+    padding: 5px 0 2px 0;
+    svg {
+      fill: darkcyan;
+    }
+    &:hover {
+      svg {
+        fill: white;
+      }
+    }
+  }
+}

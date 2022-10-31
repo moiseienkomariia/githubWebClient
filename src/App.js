@@ -30,12 +30,14 @@ function App() {
       <div className={style.container}>
         <header className={style.header}>
           <Link to="/">Home</Link>
-          <Searchform handleInputUserChange={handleInputUserChange}
-                      inputUserValue={inputUserValue}
-                      placeholder="Search GitHub User"/>
-          <SearchRepositoryForm handleInputRepoChange={handleInputRepoChange}
-                                inputSearchRepoValue={inputSearchRepoValue}
-                                placeholder="Search GitHub Repository"/>
+          <div>
+            <Searchform handleInputUserChange={handleInputUserChange}
+                        inputUserValue={inputUserValue}
+                        placeholder="Search GitHub User"/>
+            <SearchRepositoryForm handleInputRepoChange={handleInputRepoChange}
+                                  inputSearchRepoValue={inputSearchRepoValue}
+                                  placeholder="Search GitHub Repository"/>
+          </div>
         </header>
         <main>
           <Routes>
