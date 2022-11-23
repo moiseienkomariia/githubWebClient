@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import ErrorMessage from "../../../error/ErrorMessage";
+import ErrorMessage from "../../../../error/ErrorMessage";
 import style from "./Release.module.scss"
 
 const Release = ({release}) => {

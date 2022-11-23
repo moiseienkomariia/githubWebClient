@@ -1,6 +1,23 @@
 @use '../../../../styles/_btn.scss';
 .btn{
   margin-top: 10px;
+  margin-right: 15px;
+  padding: 5px 0 2px 0;
+  svg {
+    fill: darkcyan;
+  }
+  &:hover {
+    svg {
+      fill: white;
+    }
+  }
+}
+.stars, .forks {
+  margin-right: 15px;
+  svg {
+    margin-right: 5px;
+    fill: darkcyan;
+  }
 }
 .repo {
   display: inline-block;
@@ -57,7 +74,7 @@
     }
     @media (min-width: 768px) {
       padding: 0 15px;
-      width: 60%;
+      width: 40%;
     }
     .description {
       margin-bottom: 15px;
@@ -71,12 +88,6 @@
     }
     .contributors {
       margin-top: 25px;
-    }
-  }
-  .releases {
-    @media (min-width: 768px) {
-      padding: 0 15px;
-      width: 25%;
     }
   }
 }

@@ -1,0 +1,29 @@
+.content {
+  &.w100 {
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    padding: 0 15px;
+    width: 60%;
+  }
+  .contentItem {
+    padding: 10px 0;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #F6F8FA;
+    }
+
+    .contentIcon {
+      margin-right: 10px;
+    }
+
+    .contentLink {
+      color: darkcyan;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

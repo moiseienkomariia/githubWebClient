@@ -10,6 +10,9 @@ import {useQuery} from "hooks/Query";
 import UserFullView from "components/user/userComponents/userFullView/UserFullView";
 import SearchRepositoryForm from "components/repository/repositoryComponents/searchRepository/SearchRepositoryForm";
 import RepositoryFullView from "./components/repository/repositoryComponents/repositoryFullView/RepositoryFullView";
+import Content from "./components/repository/repositoryComponents/repositoryFullView/contents/content/Content";
+import Contents from "./components/repository/repositoryComponents/repositoryFullView/contents/Contents";
+import ContentsDir from "./components/repository/repositoryComponents/repositoryFullView/contents/ContentsDir";
 
 function App() {
   const query = useQuery();
@@ -46,6 +49,7 @@ function App() {
             <Route exact={false} path="/user/:name" element={<UserFullView/>}/>
             <Route exact={false} path={`/repositories/search`} element={<Repositories q={query.get("q")} page={query.get("page")} perPage="10" />} />
             <Route exact={false} path="/repository/:owner/:name" element={<RepositoryFullView/>}/>
+            <Route exact={false} path="/:owner/:name/:filename" element={<Content />} />}
           </Routes>
         </main>
       </div>

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useParams} from "react-router-dom";
-import ErrorMessage from "../../../error/ErrorMessage";
+import ErrorMessage from "../../../../error/ErrorMessage";
 import style from "./Contributor.module.scss"
 
 const Contributor = ({contributor}) => {
