@@ -3,9 +3,9 @@ import {searchReposByName} from "components/repository/service/RepositoryService
 import {useSearchParams} from "react-router-dom";
 import Title from "ui/title/Title";
 import ReactPaginate from "react-paginate";
-import style from './Repositories.modules.scss';
 import Repository from "../repositorySlimView/Repository";
 import ErrorMessage from "../../../error/ErrorMessage";
+import styles from "./Repositories.module.scss";
 
 const Repositories = ({q, page, perPage}) => {
     const [repositories, setRepositories] = useState([]);
@@ -57,18 +57,18 @@ const Repositories = ({q, page, perPage}) => {
                     {totalCount > perPage ?
                         <ReactPaginate
                             breakLabel="..."
-                            nextLabel=">"
+                            nextLabel="next"
                             onPageChange={handlePageClick}
                             pageRangeDisplayed={perPage}
                             pageCount={pages}
-                            previousLabel="<"
+                            previousLabel="preview"
                             renderOnZeroPageCount={null}
-                            containerClassName="pagination"
-                            pageClassName="page"
-                            pageLinkClassName="pageLink"
-                            activeClassName="active"
-                            previousClassName="prev"
-                            nextClassName="next"
+                            containerClassName={styles.pagination}
+                            pageClassName={styles.page}
+                            pageLinkClassName={styles.pageLink}
+                            activeClassName={styles.active}
+                            previousClassName={`${styles.btn} ${styles.prev}`}
+                            nextClassName={`${styles.btn} ${styles.next}`}
                         />
                         : ''}
                 </>

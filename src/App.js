@@ -11,8 +11,6 @@ import UserFullView from "components/user/userComponents/userFullView/UserFullVi
 import SearchRepositoryForm from "components/repository/repositoryComponents/searchRepository/SearchRepositoryForm";
 import RepositoryFullView from "./components/repository/repositoryComponents/repositoryFullView/RepositoryFullView";
 import Content from "./components/repository/repositoryComponents/repositoryFullView/contents/content/Content";
-import Contents from "./components/repository/repositoryComponents/repositoryFullView/contents/Contents";
-import ContentsDir from "./components/repository/repositoryComponents/repositoryFullView/contents/ContentsDir";
 
 function App() {
   const query = useQuery();

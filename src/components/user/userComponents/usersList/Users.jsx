@@ -6,6 +6,7 @@ import style from "./Users.module.scss";
 import User from "components/user/userComponents/userSlimView/User";
 import Title from "ui/title/Title";
 import ErrorMessage from "../../../error/ErrorMessage";
+import styles from "../../../repository/repositoryComponents/repositoryList/Repositories.module.scss";
 
 const Users = ({name, page, perPage}) => {
     const [users, setUsers] = useState([]);
@@ -54,18 +55,18 @@ const Users = ({name, page, perPage}) => {
                     {totalCount > perPage ?
                         <ReactPaginate
                             breakLabel="..."
-                            nextLabel=">"
+                            nextLabel="next"
                             onPageChange={handlePageClick}
                             pageRangeDisplayed={perPage}
                             pageCount={pages}
-                            previousLabel="<"
+                            previousLabel="preview"
                             renderOnZeroPageCount={null}
-                            containerClassName={style.pagination}
-                            pageClassName={style.page}
-                            pageLinkClassName={style.pageLink}
-                            activeClassName={style.active}
-                            previousClassName={style.prev}
-                            nextClassName={style.next}
+                            containerClassName={styles.pagination}
+                            pageClassName={styles.page}
+                            pageLinkClassName={styles.pageLink}
+                            activeClassName={styles.active}
+                            previousClassName={`${styles.btn} ${styles.prev}`}
+                            nextClassName={`${styles.btn} ${styles.next}`}
                         />
                     : ''}
                 </>
