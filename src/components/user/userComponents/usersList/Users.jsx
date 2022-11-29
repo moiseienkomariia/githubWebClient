@@ -1,6 +1,6 @@
 import {searchUsersByName} from "components/user/service/UserService";
 import ReactPaginate from "react-paginate";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 import style from "./Users.module.scss";
 import User from "components/user/userComponents/userSlimView/User";
@@ -43,6 +43,10 @@ const Users = ({name, page, perPage}) => {
         setPages(Math.ceil(totalCount / perPage));
         setTotalCount(totalCount);
     }
+
+    useMemo(() => {
+        window.scrollTo({top: 0})
+    }, [currentPage])
 
     return (
         <>

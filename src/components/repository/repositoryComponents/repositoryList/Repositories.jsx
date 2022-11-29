@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {searchReposByName} from "components/repository/service/RepositoryService";
 import {useSearchParams} from "react-router-dom";
 import Title from "ui/title/Title";
@@ -43,6 +43,10 @@ const Repositories = ({q, page, perPage}) => {
         });
         searchParams.set(q, cPage);
     };
+
+    useMemo(() => {
+        window.scrollTo({top: 0})
+    }, [currentPage])
 
     return (
         <>

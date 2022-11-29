@@ -43,7 +43,7 @@ function App() {
         <main>
           <Routes>
             <Route exact={true} path="/" element={<Main/>}/>
-            <Route exact={false} path={`/users/search`} element={<Users name={query.get("name")} page={query.get("page")} perPage="5" />} />
+            <Route exact={false} path={`/users/search`} element={<Users name={query.get("name")} page={query.get("page")} perPage="10" />} />
             <Route exact={false} path="/user/:name" element={<UserFullView/>}/>
             <Route exact={false} path={`/repositories/search`} element={<Repositories q={query.get("q")} page={query.get("page")} perPage="10" />} />
             <Route exact={false} path="/repository/:owner/:name" element={<RepositoryFullView/>}/>
