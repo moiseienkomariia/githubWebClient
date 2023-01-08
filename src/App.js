@@ -45,7 +45,7 @@ function App() {
             <Route exact={false} path={`/repositories/search`} element={<Repositories q={query.get("q")} page={query.get("page")} perPage="10" />} />
             <Route exact={false} path={`/repository/:owner`} element={<UserFullView/>} />} />
             <Route exact={false} path={`/repository/:owner/:name`} element={<RepositoryFullView/>}/>
-            <Route exact={false} path={`/:owner/:name/:filename`} element={<Content />} />}
+            <Route exact={false} path={`/repository/:owner/:name/:filename`} element={<Content />} />}
           </Routes>
         </main>
       </div>

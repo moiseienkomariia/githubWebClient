@@ -55,7 +55,7 @@ const Contents = () => {
                                             </svg>
                                         }
                                     </span>
-                                    <Link className={style.contentLink} to={generatePath("/:owner/:name/:filename", {owner: params.owner, name: params.name, filename: content.name})}
+                                    <Link className={style.contentLink} to={generatePath("/repository/:owner/:name/:filename", {owner: params.owner, name: params.name, filename: content.name})}
                                           state={{repoOwner: params.owner, repoName: params.name, content: content}}>
                                         {content.name}
                                     </Link>
