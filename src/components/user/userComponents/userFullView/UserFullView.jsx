@@ -12,7 +12,8 @@ const UserFullView = () => {
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        getUserFullViewByName(params.name)
+        const name = params.name != null ? params.name : params.owner;
+        getUserFullViewByName(name)
             .then((result) => {
                 setUser(result);
             })

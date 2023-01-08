@@ -6,6 +6,8 @@ import ReactPaginate from "react-paginate";
 import Repository from "../repositorySlimView/Repository";
 import ErrorMessage from "../../../error/ErrorMessage";
 import styles from "./Repositories.module.scss";
+import Searchform from "../../../user/userComponents/searchUser/SearchForm";
+import SearchRepositoryForm from "../searchRepository/SearchRepositoryForm";
 
 const Repositories = ({q, page, perPage}) => {
     const [repositories, setRepositories] = useState([]);
@@ -14,19 +16,28 @@ const Repositories = ({q, page, perPage}) => {
     const [currentPage, setCurrentPage] = useState(page);
     const [searchParams, setSearchParams] = useSearchParams();
     const [error, setError] = useState([]);
+    const [hasLoaded, setHasLoaded] = useState(false);
+    const [showForm, setShowForm] = useState(false);
     const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
-        searchReposByName(q, currentPage, perPage)
-            .then((results) => {
-                initPageInfo(results.total_count, perPage);
-                setRepositories(results.items);
-            })
-            .catch((error) => {
-                setError(error);
-                setHasError(true)
-            });
-    }, [currentPage, searchParams]);
+        if (q == null) {
+            setShowForm(true);
+        } else {
+            setShowForm(false);
+            searchReposByName(q, currentPage, perPage)
+                .then((results) => {
+                    initPageInfo(results.total_count, perPage);
+                    setRepositories(results.items);
+                    setHasLoaded(true);
+                })
+                .catch((error) => {
+                    setRepositories([]);
+                    setError(error);
+                    setHasError(true)
+                });
+        }
+    }, [currentPage, searchParams, perPage, q]);
 
     const initPageInfo = (totalCount, perPage) => {
         let count = totalCount < 1000 ? totalCount : 1000;
@@ -46,16 +57,17 @@ const Repositories = ({q, page, perPage}) => {
 
     useMemo(() => {
         window.scrollTo({top: 0})
-    }, [currentPage])
+    }, []);
 
     return (
         <>
-            {hasError ?
+            {showForm ?
                 <>
-                    <ErrorMessage message={error.message}/>
+                    <SearchRepositoryForm id="contentRepoSearch" placeholder="Search GitHub Repository"/>
                 </>
                 :
                 <>
+                {hasLoaded && <>
                     {repositories.length > 0 ? <Title>{totalCount} repository results</Title> : <Title>Repositories not found</Title>}
                     {repositories.length > 0 ? repositories.map((repo) => <Repository key={repo.id} item={repo}/>) : ''}
                     {totalCount > perPage ?
@@ -74,7 +86,15 @@ const Repositories = ({q, page, perPage}) => {
                             previousClassName={`${styles.btn} ${styles.prev}`}
                             nextClassName={`${styles.btn} ${styles.next}`}
                         />
-                        : ''}
+                        :
+                        ''
+                    }
+                </>}
+                    {hasError &&
+                    <>
+                        <ErrorMessage message={error.message}/>
+                    </>
+                    }
                 </>
             }
         </>
