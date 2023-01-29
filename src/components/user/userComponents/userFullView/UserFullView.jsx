@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
+import {createSearchParams, useLocation, useParams} from "react-router-dom";
 import style from "./UserFullView.module.scss";
-import {getUserFullViewByName} from "components/user/service/UserService";
+import {getUserFullViewByName, getUserRepos} from "components/user/service/UserService";
 import ErrorMessage from "../../../error/ErrorMessage";
+import UserReposList from "../userRepos/userReposList/UserReposList";
 
 const UserFullView = () => {
     const {state} = useLocation();
@@ -28,7 +29,7 @@ const UserFullView = () => {
             {hasError ?
                 <ErrorMessage message={error.message}/>
                 :
-                <>
+                <div className={style.userFullView}>
                     <div className={style.user}>
                         <img className={style.avatar} src={user.avatar_url} alt=""/>
                         <div>
@@ -37,7 +38,10 @@ const UserFullView = () => {
                                 github</a>
                         </div>
                     </div>
-                </>
+                    <div className={style.userRepos}>
+                        <UserReposList username={user.login} reposCount={user.public_repos} page='1' perPage='30' />
+                    </div>
+                </div>
             }
         </>
     )

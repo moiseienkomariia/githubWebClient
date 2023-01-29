@@ -10,3 +10,8 @@ export const getUserFullViewByName = (username) => {
     return fetch(`${config.API_URL}/users/${username}`)
         .then((res) => checkResponse(res));
 }
+
+export const getUserRepos = (username, page, perPage) => {
+    return fetch(`${config.API_URL}/users/${username}/repos?page=${page}&per_page=${perPage}`)
+        .then((res) => checkResponse(res));
+}

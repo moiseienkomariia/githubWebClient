@@ -5,3 +5,16 @@
   height: 120px;
   border: 2px solid #eee;
 }
+.userFullView {
+  @media (min-width: 768px) {
+    display: flex;
+  }
+  .user {
+    padding: 0 15px;
+    width: 25%;
+  }
+  .userRepos {
+    padding: 0 15px;
+    width: 75%;
+  }
+}
