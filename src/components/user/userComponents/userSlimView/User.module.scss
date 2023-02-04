@@ -16,4 +16,12 @@
   font-size: 0.8rem;
   margin-right: 7px;
   margin-top: 7px;
-}
+    .github, .eye {
+      fill: darkcyan;
+    }
+    &:hover {
+      .github, .eye {
+        fill: white;
+      }
+    }
+  }

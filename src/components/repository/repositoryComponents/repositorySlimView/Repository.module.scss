@@ -20,6 +20,12 @@
       border: 1px solid #eee;
       font-size: 0.8rem;
       margin-bottom: 5px;
+      margin-left: 10px;
+    }
+    .star {
+      fill: darkcyan;
+      margin-right: 5px;
+      margin-bottom: -2px;
     }
   }
   .name {
@@ -41,14 +47,6 @@
   }
   .info {
     font-size: 0.9rem;
-    .star {
-      fill: darkcyan;
-      margin-right: 5px;
-      margin-bottom: -2px;
-    }
-    .updateDate {
-      margin-left: 15px;
-    }
     .license {
       margin-left: 15px;
     }
